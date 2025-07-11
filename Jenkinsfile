@@ -3,16 +3,10 @@ pipeline {
 
   environment {
     IMAGE_NAME = "nbn-app"
-    DOCKER_HUB_REPO = "mohdkhaleelk/nbn-app"  // Replace with your DockerHub repo name
+    DOCKER_HUB_REPO = "mohdkhal/nbn-app"
   }
 
   stages {
-    stage('Clone Repo') {
-      steps {
-        git credentialsId: 'github-creds', url: 'https://github.com/mohdkhal/nbn-ci-pipeline.git'
-      }
-    }
-
     stage('Trivy Scan') {
       steps {
         sh 'trivy fs . || true'
